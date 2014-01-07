@@ -39,7 +39,7 @@ func (t *testSuite) TestCompare() {
 	img6 := loadImage("testdata/img6.png")
 
 	cmp = make([]float64, 0)
-	tolerance := 8.0
+	tolerance := 0.08
 
 	// compare two identical images
 	compare := CompareDistance(img1, img1)
