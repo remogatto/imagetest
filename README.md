@@ -14,10 +14,10 @@ go get https://github.com/remogatto/imagetest
 
 # Example
 
-See [imagetest_test.go].
+See [imagetest_test.go](imagetest_test.go).
 
 # License
 
-See [LICENSE].
+See [LICENSE](LICENSE).
 
 
