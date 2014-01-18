@@ -11,10 +11,10 @@ import (
 // 1 (totally different images). Images of different sizes are
 // automatically scaled before compare.
 func CompareDistance(img1, img2 image.Image) (distance float64) {
-	bounds := img1.(image.Image).Bounds().Intersect(img2.(image.Image).Bounds())
+	bounds := img1.Bounds().Intersect(img2.Bounds())
 	width, height := uint(bounds.Size().X), uint(bounds.Size().Y)
-	imgCmp1 := resize.Resize(width, height, img1.(image.Image), resize.Bilinear)
-	imgCmp2 := resize.Resize(width, height, img2.(image.Image), resize.Bilinear)
+	imgCmp1 := resize.Resize(width, height, img1, resize.Bilinear)
+	imgCmp2 := resize.Resize(width, height, img2, resize.Bilinear)
 	sum := 0.0
 	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
 		for x := bounds.Min.X; x < bounds.Max.X; x++ {
