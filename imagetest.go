@@ -75,11 +75,14 @@ func (c Centerer) Adjust(img1, img2 image.Image) (image.Image, image.Image) {
 }
 
 // Compare compares two images with a naive "distance" algorithm. It
-// returns a distance percentage value from 0 (identical images) to 1
-// (totally different images). Images are adjusted by Adjuster before
-// comparaison.
+// returns a distance value from 0 (identical images) to 1 (totally
+// different images). If adjust is not nil, Images are adjusted by
+// before comparaison.
 func CompareDistance(img1 image.Image, img2 image.Image, adjust Adjuster) (distance float64) {
-	imgCmp1, imgCmp2 := adjust.Adjust(img1, img2)
+	imgCmp1, imgCmp2 := img1, img2
+	if adjust != nil {
+		imgCmp1, imgCmp2 = adjust.Adjust(img1, img2)
+	}
 	bounds := imgCmp1.Bounds()
 	sum := 0.0
 	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {

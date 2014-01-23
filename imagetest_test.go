@@ -108,6 +108,17 @@ func (t *testSuite) TestAdjustCenter() {
 
 }
 
+func (t *testSuite) TestAdjustNil() {
+	img1 := loadImage("testdata/box_320_480.png")
+	img2 := loadImage("testdata/box_160_240.png")
+
+	// compare two images with different size containing the same
+	// picture withoud adjustment. Test will fail.
+	compare := CompareDistance(img1, img2, nil)
+	t.True(compare == 0)
+	t.MustFail()
+}
+
 func TestCompare(t *testing.T) {
 	pt.Run(t, new(testSuite))
 }
